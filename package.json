@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prisma:migrate": "npx prisma migrate dev --schema ./src/infrastructure/database/prisma/schema.prisma",
+    "prisma:studio": "npx prisma studio --schema ./src/infrastructure/database/prisma/schema.prisma",
+    "prisma:generate": "npx prisma generate --schema ./src/infrastructure/database/prisma/schema.prisma"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.2",
     "@tldraw/tldraw": "^4.0.2",
     "@trpc/client": "^11.6.0",
     "@trpc/server": "^11.6.0",
@@ -24,6 +28,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
+    "prisma": "^6.16.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
