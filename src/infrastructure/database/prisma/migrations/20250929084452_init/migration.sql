@@ -1,7 +1,8 @@
 -- CreateTable
 CREATE TABLE "TldrawData" (
     "id" TEXT NOT NULL PRIMARY KEY,
-    "storeData" JSONB NOT NULL,
+    "name" TEXT NOT NULL,
+    "storeData" JSONB,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
 );
