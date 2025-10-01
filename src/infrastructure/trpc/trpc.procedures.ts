@@ -24,8 +24,3 @@ export const saveStoreDataProcedure = trpcProcedure
     storeData: z.record(z.string(), z.any()),
   }))
   .mutation(({ input }) => saveStoreDataUseCase.execute(input));
-
-
-
-
-

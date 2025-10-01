@@ -16,6 +16,8 @@ const router = trpcRouter({
   save: saveStoreDataProcedure,
 });
 
+export type AppRouter = typeof router;
+
 const handler = (req: Request) => fetchRequestHandler({ endpoint: ENDPOINT, req, router });
 
 export { 
