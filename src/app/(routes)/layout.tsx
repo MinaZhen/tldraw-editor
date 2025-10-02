@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ReactNode } from "react";
-import "./globals.css";
+import { Toaster } from "sonner";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "tldraw editor",
@@ -10,7 +11,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <main>{children}</main>
+        <Toaster richColors position="top-center" />
+      </body>
     </html>
   );
 }
