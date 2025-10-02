@@ -1,6 +1,6 @@
 # Tldraw Editor App
 
-A simple drawing editor built with [Tldraw](https://tldraw.com/), powered by Next.js, TailwindCSS, Shadcn UI, and tRPC.
+A simple drawing editor built with Tldraw, powered by Next.js, TailwindCSS, Shadcn UI, and tRPC.
 
 <br>
 
@@ -8,13 +8,13 @@ A simple drawing editor built with [Tldraw](https://tldraw.com/), powered by Nex
 
 ## Tech Stack
 
-- **Next.js** – App Router, SSR, API routes  
-- **TailwindCSS** – Utility-first styling  
-- **Shadcn UI** – Accessible, themeable UI components  
-- **tRPC** – Type-safe API communication  
-- **Prisma** – ORM for database access  
-- **SQLite** – Lightweight embedded database
-- **Tldraw** – Canvas editor for shapes and drawings  
+- **[Next.js](https://nextjs.org)** – App Router, SSR, API routes  
+- **[TailwindCSS](https://tailwindcss.com)** – Utility-first styling  
+- **[Shadcn UI](https://ui.shadcn.com)** – Accessible, themeable UI components  
+- **[tRPC](https://trpc.io)** – Type-safe API communication  
+- **[Prisma](https://www.prisma.io)** – ORM for database access  
+- **[SQLite](https://www.sqlite.org)** – Lightweight embedded database  
+- **[Tldraw](https://tldraw.dev)** – Canvas editor for shapes and drawings  
 
 <br>
 
@@ -84,7 +84,6 @@ src/
     └── types/              # Type definitions
 ```
 
-
 ---
 
 ## API Endpoints
@@ -114,10 +113,7 @@ Saves the store data of a drawing.
 ```json
 {
   "id": "your-drawing-id",
-  "storeData": {
-    "document": { ... },
-    "session": { ... }
-  }
+  "storeData": "data-from-tldraw-editor"
 }
 ```
 
@@ -127,7 +123,7 @@ Saves the store data of a drawing.
 
 ## Database Schema
 
-Using Prisma with SQLite (dev.db). <br>
+Using Prisma with SQLite (`dev.db`). <br>
 Created after `npm run prisma:migrate`. <br>
 The main model:
 
