@@ -1,4 +1,4 @@
-import { DrawingRepository, DrawingListRow } from "../domain/drawing.repository";
+import { DrawingRepository, DrawingListRow } from "@/domain/drawing.repository";
 
 export class ListDrawingsUseCase {
   private repository: DrawingRepository;

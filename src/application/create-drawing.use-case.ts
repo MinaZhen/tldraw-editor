@@ -1,5 +1,5 @@
-import { Drawing } from "../domain/drawing.entity";
-import { DrawingRepository } from "../domain/drawing.repository";
+import { Drawing } from "@/domain/drawing.entity";
+import { DrawingRepository } from "@/domain/drawing.repository";
 
 export class CreateDrawingUseCase {
   private repository: DrawingRepository;

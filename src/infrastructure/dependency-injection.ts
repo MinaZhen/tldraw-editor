@@ -1,5 +1,5 @@
 import { DrawingDbRepository } from "../infrastructure/drawing.db-repository";
-import { DrawingRepository } from "../domain/drawing.repository";
+import { DrawingRepository } from "@/domain/drawing.repository";
 
 import { CreateDrawingUseCase } from "../application/create-drawing.use-case";
 import { ListDrawingsUseCase } from "../application/list-drawings.use-case";

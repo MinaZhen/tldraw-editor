@@ -1,10 +1,10 @@
 import { JsonValue } from "@/shared/types/json.types";
-import { Drawing } from "../domain/drawing.entity";
+import { Drawing } from "@/domain/drawing.entity";
 import { 
   DrawingRepository, 
   DrawingListRow,
   UpdateDrawingDataDTO,
-} from "../domain/drawing.repository";
+} from "@/domain/drawing.repository";
 import { prisma } from "./database/prisma/prisma.service";
 import { PrismaClient, Prisma } from "@prisma/client";
 
