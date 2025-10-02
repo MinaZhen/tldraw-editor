@@ -1,36 +1,156 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tldraw Editor App
 
-## Getting Started
+A simple drawing editor built with [Tldraw](https://tldraw.com/), powered by Next.js, TailwindCSS, Shadcn UI, and tRPC.
 
-First, run the development server:
+<br>
 
+---
+
+## Tech Stack
+
+- **Next.js** – App Router, SSR, API routes  
+- **TailwindCSS** – Utility-first styling  
+- **Shadcn UI** – Accessible, themeable UI components  
+- **tRPC** – Type-safe API communication  
+- **Prisma** – ORM for database access  
+- **SQLite** – Lightweight embedded database
+- **Tldraw** – Canvas editor for shapes and drawings  
+
+<br>
+
+---
+
+## Features
+
+- Create a new drawing or list your drawings from the homepage (`/`)
+- Open and edit drawings at `/[drawingId]`
+- Real-time autosave of drawing store data
+- Fully type-safe backend communication via tRPC
+- Clean SSR architecture with modular components
+
+<br>
+
+---
+
+## Setup Instructions
+In order to run the project locally you should follow the next steps.
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/MinaZhen/tldraw-editor
+cd tldraw-editor
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Run Prisma migration
+```bash
+npm run prisma:migrate
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Start the development server
+```bash
+npm run dev
+```
 
-## Learn More
+<br>
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Folders Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+src/
+├── app/                    # App Router pages and global styles
+│   ├── api/                # API route handlers
+│   │   └── trpc/           # tRPC endpoint routing
+│   └── (routes)/           # Main frontend routes (home and editor)
+├── application/            # Business logic (use cases)
+├── client/                 # UI components and frontend hooks
+│   ├── api/                # tRPC client setup
+│   ├── components/         # Reusable UI components
+│   │   └── atoms/          # Atomic design system components
+│   └── hooks/              # Custom React hooks
+├── domain/                 # Domain entities and interfaces
+├── infrastructure/         # External services and adapters
+│   ├── database/           # Prisma database setup
+│   │   └── prisma/         # Prisma schema and migrations
+│   └── trpc/               # tRPC server configuration
+├── lib/                    # Utility functions
+└── shared/                 # Shared types and interfaces
+    └── types/              # Type definitions
+```
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Endpoints
+
+All endpoints are exposed via tRPC at `/api/trpc`. You can use tools like Postman or curl to test the following endpoints locally.
+
+#### 1. `GET /api/trpc/list`
+Retrieves all drawings.
+
+#### 2. `GET /api/trpc/find?input={"id":"<drawingId>"}`
+Retrieves a specific drawing by ID.
+
+#### 3. `POST /api/trpc/create`
+Creates a new drawing given a name.
+
+**Body example:**
+```json
+{
+  "name": "Some name"
+}
+```
+
+#### 4. `POST /api/trpc/save`
+Saves the store data of a drawing.
+
+**Body example:**
+```json
+{
+  "id": "your-drawing-id",
+  "storeData": {
+    "document": { ... },
+    "session": { ... }
+  }
+}
+```
+
+<br>
+
+---
+
+## Database Schema
+
+Using Prisma with SQLite (dev.db). <br>
+Created after `npm run prisma:migrate`. <br>
+The main model:
+
+```prisma
+model TldrawData {
+  id          String   @id @default(uuid())
+  name        String
+  storeData   Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+```
+
+<br>
+
+---
+
+## Environment Variables
+No `.env` required.
+
+<br>
+
+---
+
+## License
+This project is for technical evaluation and learning purposes only.
